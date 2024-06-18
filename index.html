@@ -103,29 +103,29 @@
         const bugFixesPercent = 0.15;
 
         function calculateOutputs() {
-            var inputValue = parseFloat(document.getElementById('numberInput').value) || 0;
-            var coefficient = parseFloat(document.getElementById('coefficientSelect').value);
-            var resultValue = inputValue * coefficient;
+            let inputValue = parseFloat(document.getElementById('numberInput').value) || 0;
+            let coefficient = parseFloat(document.getElementById('coefficientSelect').value);
+            let resultValue = inputValue * coefficient;
 
-            var coffeeValue = resultValue * coffeePercent;
-            var thinkingValue = resultValue * thinkingPercent;
-            var sillyValue = resultValue * sillyPercent;
-            var checkValue = resultValue * checkPercent;
-            var bugFixesValue = resultValue * bugFixesPercent;
+            let coffeeValue = resultValue * coffeePercent;
+            let thinkingValue = resultValue * thinkingPercent;
+            let sillyValue = resultValue * sillyPercent;
+            let checkValue = resultValue * checkPercent;
+            let bugFixesValue = resultValue * bugFixesPercent;
 
-            var roundedCoffeeValue = Math.round(coffeeValue);
-            var roundedThinkingValue = Math.round(thinkingValue);
-            var roundedSillyValue = Math.round(sillyValue);
-            var roundedCheckValue = Math.round(checkValue);
-            var roundedBugFixesValue = Math.round(bugFixesValue);
+            let roundedCoffeeValue = Math.round(coffeeValue);
+            let roundedThinkingValue = Math.round(thinkingValue);
+            let roundedSillyValue = Math.round(sillyValue);
+            let roundedCheckValue = Math.round(checkValue);
+            let roundedBugFixesValue = Math.round(bugFixesValue);
 
-            var displayCoffeeValue = roundedCoffeeValue === 0 ? coffeeValue.toFixed(2) : roundedCoffeeValue;
-            var displayThinkingValue = roundedThinkingValue === 0 ? thinkingValue.toFixed(2) : roundedThinkingValue;
-            var displaySillyValue = roundedSillyValue === 0 ? sillyValue.toFixed(2) : roundedSillyValue;
-            var displayCheckValue = roundedCheckValue === 0 ? checkValue.toFixed(2) : roundedCheckValue;
-            var displayBugFixesValue = roundedBugFixesValue === 0 ? bugFixesValue.toFixed(2) : roundedBugFixesValue;
+            let displayCoffeeValue = roundedCoffeeValue === 0 ? coffeeValue.toFixed(2) : roundedCoffeeValue;
+            let displayThinkingValue = roundedThinkingValue === 0 ? thinkingValue.toFixed(2) : roundedThinkingValue;
+            let displaySillyValue = roundedSillyValue === 0 ? sillyValue.toFixed(2) : roundedSillyValue;
+            let displayCheckValue = roundedCheckValue === 0 ? checkValue.toFixed(2) : roundedCheckValue;
+            let displayBugFixesValue = roundedBugFixesValue === 0 ? bugFixesValue.toFixed(2) : roundedBugFixesValue;
 
-            var sumValue = resultValue + parseFloat(displayCoffeeValue) + parseFloat(displayThinkingValue) + parseFloat(displaySillyValue) + parseFloat(displayCheckValue) + parseFloat(displayBugFixesValue);
+            let sumValue = resultValue + parseFloat(displayCoffeeValue) + parseFloat(displayThinkingValue) + parseFloat(displaySillyValue) + parseFloat(displayCheckValue) + parseFloat(displayBugFixesValue);
 
             document.getElementById('resultOutput').innerText = resultValue.toFixed(2);
             document.getElementById('coffeeOutput').innerText = displayCoffeeValue;
@@ -133,7 +133,7 @@
             document.getElementById('sillyOutput').innerText = displaySillyValue;
             document.getElementById('checkOutput').innerText = displayCheckValue;
             document.getElementById('bugFixesOutput').innerText = displayBugFixesValue;
-            document.getElementById('sumOutput').innerText = sumValue.toFixed(2);
+            document.getElementById('sumOutput').innerText = Math.floor(sumValue);
         }
 
         document.getElementById('numberInput').addEventListener('input', calculateOutputs);
