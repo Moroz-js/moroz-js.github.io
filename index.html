@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimator App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="number"], select {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .output {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 6px;
+                font-size: 14px;
+            }
+            input[type="number"], select {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .output {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Input</th>
+                <th>Coefficient</th>
+                <th>Result</th>
+                <th>Coffee</th>
+                <th>Thinking</th>
+                <th>Silly</th>
+                <th>Check</th>
+                <th>Bug Fixes</th>
+                <th>Sum Result</th>
+            </tr>
+            <tr>
+                <td><input type="number" id="numberInput" placeholder="Enter a number"></td>
+                <td>
+                    <select id="coefficientSelect">
+                        <option value="1">Ease</option>
+                        <option value="2">Medium</option>
+                        <option value="3.5">Hard</option>
+                    </select>
+                </td>
+                <td class="output" id="resultOutput">0</td>
+                <td class="output" id="coffeeOutput">0</td>
+                <td class="output" id="thinkingOutput">0</td>
+                <td class="output" id="sillyOutput">0</td>
+                <td class="output" id="checkOutput">0</td>
+                <td class="output" id="bugFixesOutput">0</td>
+                <td class="output" id="sumOutput">0</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const coffeePercent = 0.1;
+        const thinkingPercent = 0.05;
+        const sillyPercent = 0.15;
+        const checkPercent = 0.35;
+        const bugFixesPercent = 0.15;
+
+        function calculateOutputs() {
+            var inputValue = parseFloat(document.getElementById('numberInput').value) || 0;
+            var coefficient = parseFloat(document.getElementById('coefficientSelect').value);
+            var resultValue = inputValue * coefficient;
+
+            var coffeeValue = resultValue * coffeePercent;
+            var thinkingValue = resultValue * thinkingPercent;
+            var sillyValue = resultValue * sillyPercent;
+            var checkValue = resultValue * checkPercent;
+            var bugFixesValue = resultValue * bugFixesPercent;
+
+            var roundedCoffeeValue = Math.round(coffeeValue);
+            var roundedThinkingValue = Math.round(thinkingValue);
+            var roundedSillyValue = Math.round(sillyValue);
+            var roundedCheckValue = Math.round(checkValue);
+            var roundedBugFixesValue = Math.round(bugFixesValue);
+
+            var displayCoffeeValue = roundedCoffeeValue === 0 ? coffeeValue.toFixed(2) : roundedCoffeeValue;
+            var displayThinkingValue = roundedThinkingValue === 0 ? thinkingValue.toFixed(2) : roundedThinkingValue;
+            var displaySillyValue = roundedSillyValue === 0 ? sillyValue.toFixed(2) : roundedSillyValue;
+            var displayCheckValue = roundedCheckValue === 0 ? checkValue.toFixed(2) : roundedCheckValue;
+            var displayBugFixesValue = roundedBugFixesValue === 0 ? bugFixesValue.toFixed(2) : roundedBugFixesValue;
+
+            var sumValue = resultValue + parseFloat(displayCoffeeValue) + parseFloat(displayThinkingValue) + parseFloat(displaySillyValue) + parseFloat(displayCheckValue) + parseFloat(displayBugFixesValue);
+
+            document.getElementById('resultOutput').innerText = resultValue.toFixed(2);
+            document.getElementById('coffeeOutput').innerText = displayCoffeeValue;
+            document.getElementById('thinkingOutput').innerText = displayThinkingValue;
+            document.getElementById('sillyOutput').innerText = displaySillyValue;
+            document.getElementById('checkOutput').innerText = displayCheckValue;
+            document.getElementById('bugFixesOutput').innerText = displayBugFixesValue;
+            document.getElementById('sumOutput').innerText = sumValue.toFixed(2);
+        }
+
+        document.getElementById('numberInput').addEventListener('input', calculateOutputs);
+        document.getElementById('coefficientSelect').addEventListener('change', calculateOutputs);
+    </script>
+</body>
+</html>
