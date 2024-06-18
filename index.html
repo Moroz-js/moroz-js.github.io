@@ -99,9 +99,11 @@
         const coffeePercent = 0.1;
         const thinkingPercent = 0.05;
         const sillyPercent = 0.15;
-        const checkPercent = 0.25;
+        const checkPercent = 0.10;
         const bugFixesPercent = 0.15;
-
+        function numRound(num) {
+            return Math.round(num * 2) / 2;
+        }
         function calculateOutputs() {
             let inputValue = parseFloat(document.getElementById('numberInput').value) || 0;
             let coefficient = parseFloat(document.getElementById('coefficientSelect').value);
@@ -133,7 +135,7 @@
             document.getElementById('sillyOutput').innerText = displaySillyValue;
             document.getElementById('checkOutput').innerText = displayCheckValue;
             document.getElementById('bugFixesOutput').innerText = displayBugFixesValue;
-            document.getElementById('sumOutput').innerText = Math.floor(sumValue);
+            document.getElementById('sumOutput').innerText = numRound(sumValue);
         }
 
         document.getElementById('numberInput').addEventListener('input', calculateOutputs);
